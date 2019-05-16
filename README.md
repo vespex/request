@@ -1,12 +1,12 @@
 # 对fetch简单封装
 
 - 添加了请求缓存
-- 添加了timeout
-- 添加dataFormat
+- 添加了timeout,处理超时
+- 添加parseData用于处理数据
   
 ```js
 // 数据预处理示例
-request.default.dataFormat = (data) {
+request.default.parseData = (data) {
   if (xx) {
     return data.xxx
   }
