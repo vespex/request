@@ -1,0 +1,20 @@
+{
+  "name": "v-request",
+  "version": "1.0.0",
+  "description": "base fetch for request",
+  "main": "dist/v-request.min.js",
+  "scripts": {
+    "build": "rollup index.js --file dist/test.js --format umd --name request"
+  },
+  "keywords": [
+    "fetch",
+    "timeout",
+    "cache"
+  ],
+  "author": "Vesper",
+  "license": "ISC",
+  "dependencies": {
+    "qs": "^6.7.0",
+    "whatwg-fetch": "^3.0.0"
+  }
+}
