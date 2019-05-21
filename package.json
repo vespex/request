@@ -1,10 +1,10 @@
 {
-  "name": "v-request",
-  "version": "1.0.0",
+  "name": "@vespex/request",
+  "version": "1.0.1",
   "description": "base fetch for request",
-  "main": "dist/v-request.min.js",
+  "main": "index.js",
   "scripts": {
-    "build": "rollup index.js --file dist/test.js --format umd --name request"
+    "build": ""
   },
   "keywords": [
     "fetch",

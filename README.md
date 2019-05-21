@@ -2,11 +2,18 @@
 
 - 添加了请求缓存
 - 添加了timeout,处理超时
-- 添加parseData用于处理数据
+- 添加beforeSend用于预处理请求 parseData用于处理数据
   
 ```js
-// 数据预处理示例
-request.default.parseData = (data) {
+// 请求预处理示例
+request.default.beforeSend = (data) => {
+  if (xx) {
+    return data.xxx
+  }
+  throw new Errow('xxx')
+}
+// 数据格式化示例
+request.default.parseData = (data) => {
   if (xx) {
     return data.xxx
   }

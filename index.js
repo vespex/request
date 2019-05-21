@@ -134,7 +134,8 @@ export class Request {
 
 request.default = {
   // credentials: 'include' // 跨域cookie
-  // parseData: function (data) { return data } // 统一解析数据
+  beforeSend (opts) { return opts }, // 请求前处理
+  parseData (opts, data) { return data } // 统一解析数据
 };
 
 /**
@@ -150,10 +151,10 @@ request.default = {
  * @returns {object} 返回数据或者error
  */
 export default function request(url, opts = {}) {
-  const { parseData, ...otherDefault } = request.default;
+  const { beforeSend, parseData, ...otherDefault } = request.default;
   const newOpts = { ...otherDefault, ...opts };
 
-  return Promise.resolve(new Request(url, newOpts)).then(data =>
-    typeof parseData === 'function' ? parseData(data) : data,
-  );
+  beforeSend(newOpts)
+
+  return Promise.resolve(new Request(url, newOpts)).then(parseData.bind(null, newOpts));
 }
