@@ -6,14 +6,14 @@
   
 ```js
 // 请求预处理示例
-request.default.beforeSend = (data) => {
-  if (xx) {
-    return data.xxx
+request.default.beforeSend = (opts) => {
+  if (opts.xx) {
+    xxxx
   }
   throw new Errow('xxx')
 }
 // 数据格式化示例
-request.default.parseData = (data) => {
+request.default.parseData = (opts, data) => {
   if (xx) {
     return data.xxx
   }

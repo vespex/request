@@ -1,6 +1,6 @@
 {
   "name": "@vespex/request",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "base fetch for request",
   "main": "index.js",
   "scripts": {
@@ -16,5 +16,14 @@
   "dependencies": {
     "qs": "^6.7.0",
     "whatwg-fetch": "^3.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vespex/request.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vespex/request/issues"
+  },
+  "homepage": "https://github.com/vespex/request#readme"
 }
