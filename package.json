@@ -1,10 +1,10 @@
 {
   "name": "@vespex/request",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "base fetch for request",
-  "main": "index.js",
+  "main": "dist/request.umd.min.js",
   "scripts": {
-    "build": ""
+    "build": "webpack"
   },
   "keywords": [
     "fetch",
@@ -14,10 +14,15 @@
   "author": "Vesper",
   "license": "ISC",
   "dependencies": {
-    "qs": "^6.7.0",
     "whatwg-fetch": "^3.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vespex/request.git"

@@ -1,5 +1,4 @@
 import 'whatwg-fetch';
-import { stringify } from 'qs';
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
@@ -58,6 +57,22 @@ function checkCache(url, cacheOpt) {
   return false;
 }
 
+function stringify (params) {
+  const p = []
+
+  for (let i in params) {
+    p.push(`${i}=${params[i]}`)
+  }
+
+  return p.join('&')
+}
+
+function formatParams (url, params) {
+  const join = url.indexOf('?') === -1 ? '?' : '&'
+  
+  return `${url}${join}${stringify(params)}`
+}
+
 export class Request {
   constructor(url, opts = {}) {
     this.url = url;
@@ -68,7 +83,7 @@ export class Request {
     const { cache, expire = 10 * 1000, timeout = 0, ...opts } = this.opts;
     const cacheOpts = { cache, expire }; // 缓存配置
 
-    this.url = `${this.url}${opts.params ? '?' + stringify(opts.params) : ''}`; // get参数拼装
+    opts.params && (this.url = formatParams(this.url, opts.params)); // get参数拼装
 
     const cacheResult = checkCache(this.url, cacheOpts);
 
