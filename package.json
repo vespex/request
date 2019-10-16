@@ -1,6 +1,6 @@
 {
   "name": "@vespex/request",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "base fetch for request",
   "main": "dist/request.umd.min.js",
   "scripts": {
@@ -17,11 +17,13 @@
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "babel-loader": "^8.0.6",
-    "webpack": "^4.32.2",
-    "webpack-cli": "^3.3.2"
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "rollup": "^1.24.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-uglify": "^6.0.3"
   },
   "repository": {
     "type": "git",

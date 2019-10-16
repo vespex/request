@@ -1,3 +1,9 @@
+/*
+ * @Date: 2019-05-16 17:55:55
+ * @Author: Vesper
+ * @LastEditTime: 2019-10-16 14:47:40
+ * @LastEditors: Vesper
+ */
 import 'whatwg-fetch';
 
 const codeMessage = {
@@ -61,7 +67,7 @@ function stringify (params) {
   const p = []
 
   for (let i in params) {
-    p.push(`${i}=${params[i]}`)
+    p.push(`${i}=${encodeURIComponent(params[i])}`)
   }
 
   return p.join('&')
@@ -73,7 +79,7 @@ function formatParams (url, params) {
   return `${url}${join}${stringify(params)}`
 }
 
-export class Request {
+class Request {
   constructor(url, opts = {}) {
     this.url = url;
     this.opts = opts;
@@ -82,7 +88,8 @@ export class Request {
   then(fn) {
     const { cache, expire = 10 * 1000, timeout = 0, ...opts } = this.opts;
     const cacheOpts = { cache, expire }; // 缓存配置
-
+    
+    opts.method && (opts.method = opts.method.toLocaleUpperCase())
     opts.params && (this.url = formatParams(this.url, opts.params)); // get参数拼装
 
     const cacheResult = checkCache(this.url, cacheOpts);
@@ -153,6 +160,7 @@ request.default = {
   parseData (opts, data) { return data } // 统一解析数据
 };
 
+request.Request = Request
 /**
  *
  *
@@ -165,7 +173,7 @@ request.default = {
  * }
  * @returns {object} 返回数据或者error
  */
-export default function request(url, opts = {}) {
+function request(url, opts = {}) {
   const { beforeSend, parseData, ...otherDefault } = request.default;
   const newOpts = { ...otherDefault, ...opts };
 
@@ -173,3 +181,8 @@ export default function request(url, opts = {}) {
 
   return Promise.resolve(new Request(url, newOpts)).then(parseData.bind(null, newOpts));
 }
+
+// export {request, Request}
+
+export default request
+
